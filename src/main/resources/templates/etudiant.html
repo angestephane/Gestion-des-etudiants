@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestion des étudiants</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <h1>Liste des Etudiants</h1>
+        </div>
+        <table class="table table-hover">
+            <thead>
+            <tr class="table-dark">
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Apogé</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="etudiant: ${etudiants}">
+                <td th:text="${etudiant.getNom()}"></td>
+                <td th:text="${etudiant.getPrenom()}"></td>
+                <td th:text="${etudiant.getApoge()}"></td>
+                <td th:text="${etudiant.getEmail()}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</body>
+</html>
