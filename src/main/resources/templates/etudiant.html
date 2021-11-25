@@ -3,22 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <title>Gestion des étudiants</title>
-    <link rel="stylesheet" href="bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
+    <link href="/style.css" rel="stylesheet" />
 </head>
 <body>
+
+    <nav class="navbar navbar-expand-lg nnavbar-dark bg-dark">
+    <div class="container-fluid">
+
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link text-secondary active" aria-current="page" th:href="@{/etudiants}">
+                        Accueil
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" th:href="@{/notes}">Notes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="@{/modules}">Modules</a>
+                </li>
+            </ul>
+        </div>
+
+        <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Entrer Apogé">
+            <button class="btn btn-outline-light" type="submit">Rechercher</button>
+        </form>
+    </div>
+</nav>
+
     <div class="container">
+
         <div class="row">
             <h1>Liste des Etudiants</h1>
-        </div>
-        <div class="row mb-3">
-            <div class="col-md-3">
-                <form class="d-flex">
-                    <input class="form-control me-sm-2"
-                           type="text" placeholder="Recherchert">
-                    <button class="btn btn-primary my-2 my-sm-0"
-                            type="submit">Rechercher</button>
-                </form>
-            </div>
         </div>
         <table class="table table-hover">
             <thead>
@@ -27,7 +48,7 @@
                 <th>Prénom</th>
                 <th>Apogé</th>
                 <th>Email</th>
-                <th colspan="2">Actions</th>
+                <th colspan="2" class="text-center">Actions</th>
             </tr>
             </thead>
 
@@ -37,13 +58,32 @@
                 <td th:text="${etudiant.getPrenom()}"></td>
                 <td th:text="${etudiant.getApoge()}"></td>
                 <td th:text="${etudiant.getEmail()}"></td>
-                <td><button type="button"
-                            class="btn btn-warning my-2 my-sm-0">Modifier</button></td>
-                <td><button type="button"
-                            class="btn btn-danger my-2 my-sm-0">Supprimer</button></td>
+                <td>
+                    <a th:href="@{/etudiant/update/{id}(id=${etudiant.getId()})}">
+                        <button type="button"
+                                class="btn btn-warning my-2 my-sm-0">Modifier</button> 
+                    </a>
+                </td>
+                <td>
+                    <a th:href="@{/etudiant/delet/{id}(id=${etudiant.getId()})}">
+                        <button type="button"
+                            class="btn btn-danger my-2 my-sm-0">Supprimer</button>
+                    </a>
+                </td>
             </tr>
             </tbody>
         </table>
+        <div class="row mb-3">
+            <div class="col-md-3">
+                <p>
+                    <small>Ajouter un nouvel élève.</small>
+                    <a th:href="@{/etudiants/nouveau}" >
+                        <button class="btn btn-primary my-2 my-sm-0" type="submit">Ajouter</button>
+                    </a>
+
+                </p>
+            </div>
+        </div>
 
     </div>
 

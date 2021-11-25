@@ -20,4 +20,24 @@ public class EtudiantServiceIplementation implements EtudiantService {
     public List<Etudiant> getAllEtudiant() {
         return etudiantRepository.findAll();
     }
+
+    @Override
+    public Etudiant saveEtudiant(Etudiant etudiant) {
+        return etudiantRepository.save(etudiant);
+    }
+
+    @Override
+    public Etudiant getEtudiantById(Long id) {
+        return etudiantRepository.findById(id).get();
+    }
+
+    @Override
+    public Etudiant udpdateEtudiant(Etudiant etudiant) {
+        return etudiantRepository.save(etudiant);
+    }
+
+    @Override
+    public void deleteEtudiantById(Long id) {
+        etudiantRepository.deleteById(id);
+    }
 }
